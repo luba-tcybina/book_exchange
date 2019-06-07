@@ -1,2 +1,2 @@
 # book_exchange
-buy or trade books
+Buy or trade used books with other Tome Raiders!
