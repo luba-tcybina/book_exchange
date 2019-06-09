@@ -9,8 +9,8 @@ CREATE TABLE `books` (
   `title` varchar(45) DEFAULT NULL,
   `author` varchar(45) DEFAULT NULL,
   `genre` varchar(45) DEFAULT NULL,
-  `description` blob,
-  `imageurl` blob,
+  `description` varchar(500) DEFAULT NULL,        --Change Note**Chris said this should just be a string since we're getting info from url. Blobs unnecessary
+  `imageurl` varchar(200) DEFAULT NULL,           --Change Note**Chris said this should just be a string since we're getting info from url. Blobs unnecessary
   PRIMARY KEY (`isbn`),
   UNIQUE KEY `isbn_UNIQUE` (`isbn`),
   UNIQUE KEY `idbooks_UNIQUE` (`idbooks`)
@@ -23,7 +23,6 @@ CREATE TABLE `collections` (
   `idcollections` int(11) NOT NULL,
   `raider_id` int(11) DEFAULT NULL,
   `tome_id` int(11) DEFAULT NULL,
-  `for_sale` tinyint(1) DEFAULT NULL,
   `to_trade` tinyint(1) DEFAULT NULL,
   `condition` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`idcollections`),
