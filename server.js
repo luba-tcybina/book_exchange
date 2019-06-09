@@ -4,7 +4,7 @@ var express = require("express");
 // var moment = require("moment");
 // var axios = require("axios");
 // var amazon = require('amazon-product-api');
-// var sequelize = require('sequelize');
+var sequelize = require('sequelize');
 
 // Import the API keys
 // var keys = require("./keys");
@@ -25,7 +25,7 @@ var app = express();
 var PORT = process.env.PORT || 8080;
 
 // Requiring our models for syncing
-// var db = require("./app/models");
+var db = require("./app/models");
 
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
@@ -41,10 +41,10 @@ app.use(express.static("public"));
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
-// db.sequelize.sync({ force: true }).then(function() {
+db.sequelize.sync({ force: true }).then(function() {
   app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
   });
-// });
+});
 
 
