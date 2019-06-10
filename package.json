@@ -16,5 +16,10 @@
   "bugs": {
     "url": "https://github.com/akoval92/book_exchange/issues"
   },
-  "homepage": "https://github.com/akoval92/book_exchange#readme"
+  "homepage": "https://github.com/akoval92/book_exchange#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mysql2": "^1.6.5",
+    "sequelize": "^5.8.7"
+  }
 }

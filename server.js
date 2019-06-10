@@ -1,10 +1,10 @@
 
 var express = require("express");
+var mysql = require("mysql2");
 // var dotenv = require("dotenv").config();
 // var moment = require("moment");
 // var axios = require("axios");
 // var amazon = require('amazon-product-api');
-var sequelize = require('sequelize');
 
 // Import the API keys
 // var keys = require("./keys");
@@ -19,28 +19,21 @@ var sequelize = require('sequelize');
 //   awsTag: "aws Tag"
 // });
 
-// Sets up the Express App
-// =============================================================
 var app = express();
 var PORT = process.env.PORT || 8080;
+var db = require("./app/models/bookInfo");
 
-// Requiring our models for syncing
-var db = require("./app/models");
-
-// Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// Static directory
+
 app.use(express.static("public"));
 
-// Routes
-// =============================================================
+require("./app/routes/api-routes")(app);
+require("./app/routes/html-routes")(app);
 
 
 
-// Syncing our sequelize models and then starting our Express app
-// =============================================================
 db.sequelize.sync({ force: true }).then(function() {
   app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
