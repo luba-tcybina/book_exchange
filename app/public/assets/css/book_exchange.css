@@ -183,6 +183,14 @@ header.masthead {
   background-size: cover;
 }
 
+*{color: #fff;}
+.bg {background: url("../img/header-bg.jpg") no-repeat; width: 100%; height: 100vh;}
+.form-container {border: 0.5px solid #fd4; padding: 50px 60px; margin-top: 20vh;
+-webkit-box-shadow: -1px 4px 33px 28px rgba(0,0,0,0.75);
+-moz-box-shadow: -1px 4px 33px 28px rgba(0,0,0,0.75);
+box-shadow: -1px 4px 33px 28px rgba(0,0,0,0.75);
+}
+
 header.masthead .intro-text {
   padding-top: 150px;
   padding-bottom: 100px;
