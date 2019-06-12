@@ -4,25 +4,20 @@
 // ******************************************************************************
 // *** Dependencies
 // =============================================================
+require("dotenv").config();
 var express = require("express");
-var dotenv = require("dotenv").config();
 var moment = require("moment");
 var axios = require("axios");
-var amazon = require('amazon-product-api');
 var sequelize = require('sequelize');
+
 
 // Import the API keys
 var keys = require("./keys");
 
 // Initialize the API client using our client id and secret
-var amazonKeys = new Amazon(keys.amazon);
+var google = new Amazon(keys.googleBooks);
 
-// Create client
-var client = amazon.createClient({
-  awsId: "aws ID",
-  awsSecret: "aws Secret",
-  awsTag: "aws Tag"
-});
+
 
 // Sets up the Express App
 // =============================================================
