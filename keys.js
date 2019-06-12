@@ -1,6 +1,5 @@
-console.log("Keys loaded");
+console.log('this is loaded');
 
-exports.amazon = {
-  id: process.env.AMAZON_KEY,
-  secret: process.env.AMAZON_SECRET
+exports.googleBooks = {
+  id: process.env.GOOGLE_BOOKS_KEY,
 };

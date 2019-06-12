@@ -16,7 +16,7 @@ https.request(options, function(res){
   		});
   	res.on('end', function () {
     	objectJSON=JSON.parse(str);
-        //prints the title of the book
-    	console.log(objectJSON.items[0].volumeInfo.title);
+        //prints the book object
+    	console.log(objectJSON.items[0]);
   		});
 	}).end();
