@@ -10,6 +10,9 @@ var moment = require("moment");
 var axios = require("axios");
 var sequelize = require('sequelize');
 
+// Adding Passport code
+var passport = require('passport');
+var Strategy = require('passport-local').Strategy;
 
 // Import the API keys
 var keys = require("./keys");
