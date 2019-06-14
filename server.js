@@ -4,21 +4,21 @@
 // ******************************************************************************
 // *** Dependencies
 // =============================================================
-require("dotenv").config();
+// require("dotenv").config();
 var express = require("express");
-var moment = require("moment");
-var axios = require("axios");
+// var moment = require("moment");
+// var axios = require("axios");
 var sequelize = require('sequelize');
 
 // Adding Passport code
-var passport = require('passport');
-var Strategy = require('passport-local').Strategy;
+// var passport = require('passport');
+// var Strategy = require('passport-local').Strategy;
 
 // Import the API keys
-var keys = require("./keys");
+// var keys = require("./keys");
 
 // Initialize the API client using our client id and secret
-var google = new Amazon(keys.googleBooks);
+// var google = new Amazon(keys.googleBooks);
 
 
 
