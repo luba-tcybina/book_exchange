@@ -16,13 +16,12 @@ var Book = sequelize.define("book", {
     imageurl: Sequelize.STRING
 });
 var Raider = sequelize.define("raider", {
-    raider_id: { type: CHAR(36), BINARY, defaultValue: Sequelize.UUIDV1, primaryKey: true, unique: true },
+    raider_id: { type: Sequelize.INTEGER, defaultValue: Sequelize.UUIDV1, primaryKey: true, unique: true },
     username: Sequelize.STRING,
     email: Sequelize.STRING,
     password: Sequelize.STRING,
 });
-Collection = sequelize.define('collection', {
-    status: DataTypes.STRING, 
+Collection = sequelize.define('collection', { 
     condition: Sequelize.STRING
 });
 
