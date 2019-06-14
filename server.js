@@ -18,7 +18,7 @@ var Strategy = require('passport-local').Strategy;
 var keys = require("./keys");
 
 // Initialize the API client using our client id and secret
-var google = new Amazon(keys.googleBooks);
+// var google = new Amazon(keys.googleBooks);
 
 
 
@@ -28,7 +28,7 @@ var app = express();
 var PORT = process.env.PORT || 8080;
 
 // Requiring our models for syncing
-var db = require("./models");
+var db = require("./app/models");
 
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
@@ -44,7 +44,7 @@ app.use(express.static("public"));
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
-db.sequelize.sync({ force: true }).then(function() {
+db.sequelize.sync({ force: true, logging: console.log  }).then(function() {
   app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
   });
