@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
     title: DataTypes.STRING,
     author: DataTypes.STRING,
     genre: DataTypes.STRING,
-    description: DataTypes.STRING,
+    description: DataTypes.TEXT,
     imageurl: DataTypes.STRING
   }, {});
   Book.associate = function(models) {

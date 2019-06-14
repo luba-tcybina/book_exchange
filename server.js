@@ -29,7 +29,8 @@ var PORT = process.env.PORT || 8080;
 
 // Requiring our models for syncing
 var db = require("./app/models");
-
+// Enable fixtures to load data from file
+const sequelize_fixtures = require('sequelize-fixtures');
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -44,10 +45,16 @@ app.use(express.static("public"));
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
-db.sequelize.sync({ force: true, logging: console.log  }).then(function() {
+db.sequelize.sync({ force: true, logging: console.log  })
+.then(function() {
   app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
   });
-});
+}).then(function () { 
+  return sequelize_fixtures.loadFile('./seeds.json', db)
 
+ })
+.then(function(){
+  console.log("data loaded");
+});
 
