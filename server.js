@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 // *****************************************************************************
 // Server.js - This file is the initial starting point for the Node/Express server.
 //
@@ -11,23 +9,18 @@ var express = require("express");
 var moment = require("moment");
 var axios = require("axios");
 var sequelize = require('sequelize');
->>>>>>> 7d3dc981f3bea73a0ea8f3d5794c0a35534960d1
 
 // Adding Passport code
 var passport = require('passport');
 var Strategy = require('passport-local').Strategy;
 
 // Import the API keys
-<<<<<<< HEAD
-// var keys = require("./keys");
-=======
 var keys = require("./keys");
 
 // Initialize the API client using our client id and secret
 var google = new Amazon(keys.googleBooks);
 
 
->>>>>>> 7d3dc981f3bea73a0ea8f3d5794c0a35534960d1
 
 var express = require("express");
 // var mysql = require("mysql");
