@@ -8,7 +8,7 @@
 var express = require("express");
 // var moment = require("moment");
 // var axios = require("axios");
-var sequelize = require('sequelize');
+// var sequelize = require('sequelize');
 
 // Adding Passport code
 // var passport = require('passport');
@@ -40,10 +40,10 @@ app.use(express.json());
 
 
 
-db.sequelize.sync({ force: true }).then(function() {
+// db.sequelize.sync({ force: true }).then(function() {
   app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
   });
-});
+// });
 
 
