@@ -22,7 +22,7 @@ var passport = require('./app/config/passport');
 
 
 var express = require("express");
-// var mysql = require("mysql");
+var mysql = require("mysql");
 var app = express();
 var PORT = process.env.PORT || 8080;
 // var PORT = process.env.PORT || 5050;
