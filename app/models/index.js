@@ -1,10 +1,3 @@
-<<<<<<< HEAD
-module.exports = {
-    bookInfo: require('./bookInfo'),
-    raiderInfo: require('./raiderInfo'),
-    databaseBooks: require('./databaseBooks')
-}
-=======
 'use strict';
 
 const fs = require('fs');
@@ -14,6 +7,10 @@ const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || 'development';
 const config = require(__dirname + '/../config/config.json')[env];
 const db = {};
+
+//****Node error. not sure if it's from here***********
+// TypeError: Class constructor model cannot be invoked without 'new'
+//     at Sequelize.import
 
 let sequelize;
 if (config.use_env_variable) {
@@ -28,7 +25,7 @@ fs
     return (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js');
   })
   .forEach(file => {
-    const model = sequelize['import'](path.join(__dirname, file));
+    const model = sequelize['import'](path.join(__dirname, file));        //*****Here?
     db[model.name] = model;
   });
 
@@ -42,4 +39,3 @@ db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
 module.exports = db;
->>>>>>> 244730eb1ec13e92cd64138044bbe818c4d3fbfa

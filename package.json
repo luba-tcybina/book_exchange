@@ -1,10 +1,4 @@
 {
-<<<<<<< HEAD
-  "name": "book_exchange",
-  "version": "1.0.0",
-  "description": "Buy or trade used books with other Tome Raiders!",
-  "main": "server.js",
-=======
   "name": "tome_raider",
   "version": "1.0.0",
   "description": "Buy or trade used books with other Tome Raiders!",
@@ -21,29 +15,12 @@
     "sequelize-fixtures": "^0.10.0"
   },
   "devDependencies": {},
->>>>>>> 244730eb1ec13e92cd64138044bbe818c4d3fbfa
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
   "repository": {
     "type": "git",
-<<<<<<< HEAD
-    "url": "git+https://github.com/akoval92/book_exchange.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/akoval92/book_exchange/issues"
-  },
-  "homepage": "https://github.com/akoval92/book_exchange#readme",
-  "dependencies": {
-    "express": "^4.17.1",
-    "mysql": "^2.17.1",
-    "mysql2": "^1.6.5",
-    "sequelize": "^5.8.9"
-  }
-=======
     "url": "git+https://github.com/gwyndall/tome_raider.git"
   },
   "keywords": [],
@@ -53,5 +30,4 @@
     "url": "https://github.com/gwyndall/tome_raider/issues"
   },
   "homepage": "https://github.com/gwyndall/tome_raider#readme"
->>>>>>> 244730eb1ec13e92cd64138044bbe818c4d3fbfa
 }
