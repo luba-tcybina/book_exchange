@@ -1,44 +1,31 @@
+// Requiring path to so we can use relative routes to our HTML files
 var path = require("path");
 
+// Requiring our custom middleware for checking if a user is logged in
+var isAuthenticated = require("../config/middleware/isAuthenticated");
 
 module.exports = function(app) {
 
-    // Main Page
+  app.get("/", function(req, res) {
+    // If the user already has an account send them to the members page
+    if (req.user) {
+      res.redirect("../public/assets/members");
+    }
+    res.sendFile(path.join(__dirname, "../public/assets/index.html"));
+  });
 
-    app.get("/", function(req, res) {
-      res.sendFile(path.join(__dirname, ""));               //   ../public/index.html
-    });
+  app.get("/login", function(req, res) {
+    // If the user already has an account send them to the members page
+    if (req.user) {
+      res.redirect("/members");
+    }
+    res.sendFile(path.join(__dirname, "../public/assets/login.html"));
+  });
 
-    // Login Page
-    app.get("/login", function(req, res) {
-      res.sendFile(path.join(__dirname, ""));               //   ../public/login.html
-    });
-
-    // Add Book Page
-    app.get("/add", function(req, res) {
-      res.sendFile(path.join(__dirname, ""));               //   ../public/add.html
-    });
-
-    // Browse Book Page
-    app.get("/browse", function(req, res) {
-      res.sendFile(path.join(__dirname, ""));               //   ../public/browse.html
-    });
-
-
-    // Another path for search result when someone is searching for the book they want? 
-
-    // app.get("/result", function(req, res) {
-    //   res.sendFile(path.join(__dirname, ""));               //   ../public/result.html
-    // });
-
-
-
-
-
-
-
-
-
-
+  // Here we've add our isAuthenticated middleware to this route.
+  // If a user who is not logged in tries to access this route they will be redirected to the signup page
+  app.get("/members", isAuthenticated, function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/assets/members.html"));
+  });
 
 };

@@ -11,8 +11,7 @@ var express = require("express");
 // var sequelize = require('sequelize');
 
 // Adding Passport code
-// var passport = require('passport');
-// var Strategy = require('passport-local').Strategy;
+var passport = require('./app/config/passport');
 
 // Import the API keys
 // var keys = require("./keys");
@@ -34,7 +33,13 @@ const sequelize_fixtures = require('sequelize-fixtures');
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-
+// We need to use sessions to keep track of our user's login status
+const session = require('express-session')
+app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true }));
+app.use(passport.initialize());
+app.use(passport.session());
+// Static directory
+app.use(express.static("public"));
 
 // app.use(express.static("app/public"));
 

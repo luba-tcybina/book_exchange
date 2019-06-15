@@ -1,9 +1,22 @@
-//$("#add-btn").on('click', function() {
+$(document).ready(function() {
+	$('#add-btn').on('click', function(event) {
+		event.preventDefault();
+		console.log($('#title').val().trim());
+		console.log($("#author").val().trim());
+
+		/*var newBook = {
+		title = $("#title").val().trim(),
+	 	author = $("#author").val().trim(),
+	 	genre = $("#genre").val().trim(),
+	 	description = $("#description").val().trim(),
+	 	isbn = $("#ibsn").val().trim()
+	};
+
+	console.log(newBook);
 	
-	var isbn = "1119056071" // document.getElementById('isbn');
 	
 	var https = require('https');
-	var path = '/books/v1/volumes?q=isbn:' + isbn + '&key=AIzaSyDB0TwWP5ouoFr37dmNo1r9HCRWzg3czsk';
+	var path = '/books/v1/volumes?q=isbn:' + newBook.isbn + '&key=AIzaSyDB0TwWP5ouoFr37dmNo1r9HCRWzg3czsk';
 
 	var options = {
 		host: 'www.googleapis.com',
@@ -13,7 +26,7 @@
 	var str = '';
 	var objectJSON;
 
-	//Initiating the request that gets ISBN data
+	//Initiating the request that gets book data
 	https
 		.request(options, function(res) {
 			res.on('data', function(chunk) {
@@ -21,25 +34,43 @@
 			});
 			res.on('end', function() {
 				objectJSON = JSON.parse(str);
-				//prints the book object
-				console.log(objectJSON.items[0]);
-				var resISBN = isbn;
-					console.log(resISBN);
-				var resTitle = objectJSON.items[0].volumeInfo.title;
-					console.log(resTitle);
-				var resAuthor = objectJSON.items[0].volumeInfo.authors[0];
-					console.log(resAuthor);
-				var resGenre = objectJSON.items[0].volumeInfo.categories[0];
-					console.log(resGenre);
-				var resDescription = objectJSON.items[0].volumeInfo.description;
-					console.log(resDescription);
-				var resImage = "https://books.google.com/books/content?id=" + objectJSON.items[0].id + "&printsec=frontcover&img=1&zoom=2&edge=nocurl&source=gbs_api";
-				console.log(resImage);
 			});
-			
 		})
 
 .end();
 
+return objectJSON;
+});
 
-//});
+
+//prints the book object
+console.log(objectJSON[0].items[0] + '================\n');
+
+var resISBN = isbn;
+	console.log(resISBN + '\n');
+
+var resTitle = objectJSON.items[0].volumeInfo.title;
+	console.log(resTitle + '\n');
+
+var resAuthor = objectJSON.items[0].volumeInfo.authors[0];
+	console.log(resAuthor + '\n');
+
+var resGenre = objectJSON.items[0].volumeInfo.categories[0];
+	console.log(resGenre + '\n');
+
+var resDescription = objectJSON.items[0].volumeInfo.description;
+	console.log(resDescription + '\n');
+
+var date = new Date(objectJSON.items[0].volumeInfo.publishedDate);
+var resYear = date.getFullYear();
+	console.log(resYear + '\n');
+
+var resPages = objectJSON.items[0].volumeInfo.pageCount;
+console.log(resPages + '\n');
+
+var resImage = "https://books.google.com/books/content?id=" + objectJSON[0].items[0].id + "&printsec=frontcover&img=1&zoom=2&edge=nocurl&source=gbs_api";
+	console.log(resImage + '\n');
+
+	*/
+	});
+});
