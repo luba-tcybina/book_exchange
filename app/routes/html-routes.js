@@ -12,12 +12,13 @@ module.exports = function(app) {
       res.redirect("../public/assets/members");
     }
     res.sendFile(path.join(__dirname, "../public/assets/index.html"));
+
   });
 
   app.get("/login", function(req, res) {
     // If the user already has an account send them to the members page
     if (req.user) {
-      res.redirect("/members");
+      res.redirect("/login.html");
     }
     res.sendFile(path.join(__dirname, "../public/assets/login.html"));
   });
