@@ -1,6 +1,9 @@
 node_modules
+<<<<<<< HEAD
+=======
 .DS_Store
 .env
 schema.sql
 seed.sql
 notes.txt
+>>>>>>> 244730eb1ec13e92cd64138044bbe818c4d3fbfa
