@@ -1,76 +1,85 @@
 $(document).ready(function() {
 	$('#add-btn').on('click', function(event) {
 		event.preventDefault();
-		console.log($('#title').val().trim());
-		console.log($("#author").val().trim());
+		var key = 'AIzaSyDB0TwWP5ouoFr37dmNo1r9HCRWzg3czsk';
 
-		/*var newBook = {
-		title = $("#title").val().trim(),
-	 	author = $("#author").val().trim(),
-	 	genre = $("#genre").val().trim(),
-	 	description = $("#description").val().trim(),
-	 	isbn = $("#ibsn").val().trim()
-	};
+		var title = $('#title')
+			.val()
+			.trim();
+		var author = $('#author')
+			.val()
+			.trim();
+		var isbn = $('#isbn')
+			.val()
+			.trim();
+		console.log('title: ' + title + '\nauthor: ' + author + '\nISBN: ' + isbn);
 
-	console.log(newBook);
-	
-	
-	var https = require('https');
-	var path = '/books/v1/volumes?q=isbn:' + newBook.isbn + '&key=AIzaSyDB0TwWP5ouoFr37dmNo1r9HCRWzg3czsk';
+		if (isbn) {
+			var path = '/books/v1/volumes?q=isbn:' + isbn + '&key=' + key;
+		} else {
+			if (!title) {
+				var path = '/books/v1/volumes?q=inauthor:' + author + '&key=' + key;
+			} else if (!author) {
+				var path = '/books/v1/volumes?q=intitle:' + title + '&key=' + key;
+			} else {
+				var path = '/books/v1/volumes?q=intitle:' + title + '+inauthor:' + author + '&key=' + key;
+			}
+		}
 
-	var options = {
-		host: 'www.googleapis.com',
-		path: path,
-	};
+		console.log(path);
 
-	var str = '';
-	var objectJSON;
+		var https = require('https');
+		var options = {
+			host: 'www.googleapis.com',
+			path: path,
+		};
 
-	//Initiating the request that gets book data
-	https
-		.request(options, function(res) {
-			res.on('data', function(chunk) {
-				str += chunk;
-			});
-			res.on('end', function() {
-				objectJSON = JSON.parse(str);
-			});
-		})
+		var str = '';
+		var objectJSON;
 
-.end();
+		//Initiating the request that gets book data
+		https
+			.request(options, function(res) {
+				res.on('data', function(chunk) {
+					str += chunk;
+				});
+				res.on('end', function() {
+					objectJSON = JSON.parse(str);
+					//prints the title of the book
+					console.log(objectJSON.items[0]);
+				});
+			})
+			.end();
 
-return objectJSON;
-});
+		//prints the book object
+		/*
+		var resISBN = isbn;
+		console.log(resISBN + '\n');
 
+		var resTitle = objectJSON.items[0].volumeInfo.title;
+		console.log(resTitle + '\n');
 
-//prints the book object
-console.log(objectJSON[0].items[0] + '================\n');
+		var resAuthor = objectJSON.items[0].volumeInfo.authors[0];
+		console.log(resAuthor + '\n');
 
-var resISBN = isbn;
-	console.log(resISBN + '\n');
+		var resGenre = objectJSON.items[0].volumeInfo.categories[0];
+		console.log(resGenre + '\n');
 
-var resTitle = objectJSON.items[0].volumeInfo.title;
-	console.log(resTitle + '\n');
+		var resDescription = objectJSON.items[0].volumeInfo.description;
+		console.log(resDescription + '\n');
 
-var resAuthor = objectJSON.items[0].volumeInfo.authors[0];
-	console.log(resAuthor + '\n');
+		var date = new Date(objectJSON.items[0].volumeInfo.publishedDate);
+		var resYear = date.getFullYear();
+		console.log(resYear + '\n');
 
-var resGenre = objectJSON.items[0].volumeInfo.categories[0];
-	console.log(resGenre + '\n');
+		var resPages = objectJSON.items[0].volumeInfo.pageCount;
+		console.log(resPages + '\n');
 
-var resDescription = objectJSON.items[0].volumeInfo.description;
-	console.log(resDescription + '\n');
-
-var date = new Date(objectJSON.items[0].volumeInfo.publishedDate);
-var resYear = date.getFullYear();
-	console.log(resYear + '\n');
-
-var resPages = objectJSON.items[0].volumeInfo.pageCount;
-console.log(resPages + '\n');
-
-var resImage = "https://books.google.com/books/content?id=" + objectJSON[0].items[0].id + "&printsec=frontcover&img=1&zoom=2&edge=nocurl&source=gbs_api";
-	console.log(resImage + '\n');
-
-	*/
+		var resImage =
+			'https://books.google.com/books/content?id=' +
+			objectJSON[0].items[0].id +
+			'&printsec=frontcover&img=1&zoom=2&edge=nocurl&source=gbs_api';
+		console.log(resImage + '\n');
+		*/
 	});
 });
