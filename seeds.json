@@ -63,40 +63,49 @@
         "data": {
             "username": "carolyn",
             "email": "carolynwk@gmail.com",
-            "password": "xyz",
-            "books": [{
-                "isbn": 9780312550981,
-                "_through": {
-                    "condition": "New"
-                }
-            },
-            {
-                "isbn": 9780321657299,
-                "_through": {
-                    "condition": "New"
-                }
-            },
-            {
-                "isbn": 9780596527679,
-                "_through": {
-                    "condition": "New"
-                }
-            },
-            {
-                "isbn": 9781681883816,
-                "_through": {
-                    "condition": "New"
-                }
-            },
-            {
-                "isbn": 9781786824813,
-                "_through": {
-                    "condition": "New"
-                }
-            }
-        
-        
-        ]
+            "password": "xyz"
+
+        }
+    },
+    {
+        "model": "Collection",
+        "data": {
+            "RaiderId": 1,
+            "BookIsbn": 9780312550981,
+            "condition": "New"
+
+        }
+    },
+    {
+        "model": "Collection",
+        "data": {
+            "RaiderId": 1,
+            "BookIsbn": 9780321657299,
+            "condition": "New"
+        }
+    },
+    {
+        "model": "Collection",
+        "data": {
+            "RaiderId": 1,
+            "BookIsbn": 9780596527679,
+            "condition": "New"
+        }
+    },
+    {
+        "model": "Collection",
+        "data": {
+            "RaiderId": 1,
+            "BookIsbn": 9781681883816,
+            "condition": "New"
+        }
+    },
+    {
+        "model": "Collection",
+        "data": {
+            "RaiderId": 1,
+            "BookIsbn": 9781786824813,
+            "condition": "New"
         }
     }
 ]
