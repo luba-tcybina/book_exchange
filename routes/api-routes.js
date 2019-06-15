@@ -21,11 +21,15 @@ module.exports = function(app) {
     db.Raider.create({
       email: req.body.email,
       password: req.body.password
-    }).then(function() {
-      res.redirect(307, "/api/login");
+    }).then(function(dbRes) {
+      res.redirect('/members');
     }).catch(function(err) {
-      console.log(err);
-      res.json(err);
+      if (err.name === 'SequelizeUniqueConstraintError') {
+        res.render('login')
+      } else {
+        res.json(err);
+      }
+      
       // res.status(422).json(err.errors[0].message);
     });
   });

@@ -9,9 +9,11 @@ var express = require("express");
 var moment = require("moment");
 var axios = require("axios");
 var sequelize = require('sequelize');
+var path = require('path')
+var exphbs = require("express-handlebars");
 
 // Adding Passport code
-var passport = require('./app/config/passport');
+var passport = require('./config/passport');
 
 // Import the API keys
 var keys = require("./keys");
@@ -27,7 +29,7 @@ var app = express();
 var PORT = process.env.PORT || 8080;
 
 // Requiring our models for syncing
-var db = require("./app/models");
+var db = require("./models");
 // Enable fixtures to load data from file
 const sequelize_fixtures = require('sequelize-fixtures');
 // Sets up the Express app to handle data parsing
@@ -38,14 +40,22 @@ const session = require('express-session')
 app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
+// Handlebars
+app.engine(
+  "handlebars",
+  exphbs({
+    defaultLayout: "main"
+  })
+);
+app.set("view engine", "handlebars");
 // Static directory
-app.use(express.static("public"));
+app.use(express.static(path.join(__dirname, "public")));
 
 // Routes
 // =============================================================
 // Routes
-require("./app/routes/api-routes")(app);
-require("./app/routes/html-routes")(app);
+require("./routes/api-routes")(app);
+require("./routes/html-routes")(app);
 
 
 // Syncing our sequelize models and then starting our Express app
