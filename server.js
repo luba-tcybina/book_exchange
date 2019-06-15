@@ -43,10 +43,11 @@ app.use(passport.session());
 // Static directory
 app.use(express.static("public"));
 
-// app.use(express.static("app/public"));
-
-// require("./app/routes/api-routes")(app);
-// require("./app/routes/html-routes")(app);
+// Routes
+// =============================================================
+// Routes
+require("./app/routes/api-routes")(app);
+require("./app/routes/html-routes")(app);
 
 
 // Syncing our sequelize models and then starting our Express app
