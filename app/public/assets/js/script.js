@@ -1,13 +1,19 @@
-$("#add-btn").on("click", function(event) {
-	event.preventDefault();
+$(document).ready(function() {
+	$('#add-btn').on('click', function(event) {
+		event.preventDefault();
+		console.log($('#title').val().trim());
+		console.log($("#author").val().trim());
 
-	var newBook = {
+		/*var newBook = {
 		title = $("#title").val().trim(),
 	 	author = $("#author").val().trim(),
 	 	genre = $("#genre").val().trim(),
 	 	description = $("#description").val().trim(),
 	 	isbn = $("#ibsn").val().trim()
 	};
+
+	console.log(newBook);
+	
 	
 	var https = require('https');
 	var path = '/books/v1/volumes?q=isbn:' + newBook.isbn + '&key=AIzaSyDB0TwWP5ouoFr37dmNo1r9HCRWzg3czsk';
@@ -64,3 +70,7 @@ console.log(resPages + '\n');
 
 var resImage = "https://books.google.com/books/content?id=" + objectJSON[0].items[0].id + "&printsec=frontcover&img=1&zoom=2&edge=nocurl&source=gbs_api";
 	console.log(resImage + '\n');
+
+	*/
+	});
+});

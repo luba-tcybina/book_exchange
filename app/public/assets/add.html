@@ -71,29 +71,7 @@
       </div>
     </div>
   </div>
-
-  <script type="text/javascript">
-    //  needs work
-    $("#add-btn").on("click", function (event) {
-      event.preventDefault();
-      var newBook = {
-        title: $("#title").val().trim(),
-        author: $("#author").val().trim(),
-        genre: $("#genre").val().trim(),
-        condition: $("#condition").val().trim(),
-        description: $("#description").val().trim(),
-        isbn: $("#isbn").val().trim(),
-      };
-
-      //  needs work
-      $.post("/api/books", newBook)
-        .then(function (data) {
-          console.log("add.html", data);
-          alert("Adding book...");
-        });
-    });
-  </script>
-
+<script type="text/javascript" src="./js/script.js"></script>
 </body>
 
 </html>
