@@ -48,38 +48,43 @@ $(document).ready(function() {
 				// Empty the contents of the book-results div
 				$('#book-results').empty();
 
-				// Constructing HTML containing the book information
-				for (let i = 0; i < response.items.length; i++) {
-					var bookImage = $('<img>').attr(
-						'src',
-						'https://books.google.com/books?id=' +
-							response.items[i].id +
-							'&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api'
-					);
-					var bookTitle = $('<h4>').text(response.items[i].volumeInfo.title);
-					var bookAuthor = $('<h5>').text(response.items[i].volumeInfo.authors[0]);
-					var bookGenre = $('<h5>').text(response.items[i].volumeInfo.categories[0]);
-					var bookDescription = $('<p>').text(response.items[i].volumeInfo.description);
-					var date = new Date(response.items[i].volumeInfo.publishedDate);
-					var bookYear = $('<p>').text('Published: ' + date.getFullYear());
-					var bookPages = $('<p>').text(response.items[i].volumeInfo.pageCount + 'pages');
-					var bookSelect = $("<button class='select-book'>")
-						.attr('href', '')
-						.text('Add this book');
-					var lineBreak = $('</br>');
+				if (response.totalItems == 0) {
+					var noBooks = $('<h4>').text('No books found!');
+					$('#book-results').append(noBooks);
+				} else {
+					// Constructing HTML containing the book information
+					for (let i = 0; i < response.items.length; i++) {
+						var bookImage = $('<img>').attr(
+							'src',
+							'https://books.google.com/books?id=' +
+								response.items[i].id +
+								'&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api'
+						);
+						var bookTitle = $('<h4>').text(response.items[i].volumeInfo.title);
+						var bookAuthor = $('<h5>').text(response.items[i].volumeInfo.authors[0]);
+						var bookGenre = $('<h5>').text(response.items[i].volumeInfo.categories[0]);
+						var bookDescription = $('<p>').text(response.items[i].volumeInfo.description);
+						var date = new Date(response.items[i].volumeInfo.publishedDate);
+						var bookYear = $('<p>').text('Published: ' + date.getFullYear());
+						var bookPages = $('<p>').text(response.items[i].volumeInfo.pageCount + 'pages');
+						var bookSelect = $("<button class='select-book'>")
+							.attr('href', '')
+							.text('Add this book');
+						var lineBreak = $('</br>');
 
-					// Append the new book content
-					$('#book-results').append(
-						lineBreak,
-						bookImage,
-						bookTitle,
-						bookAuthor,
-						bookGenre,
-						bookDescription,
-						bookYear,
-						bookPages,
-						bookSelect,
-					);
+						// Append the new book content
+						$('#book-results').append(
+							lineBreak,
+							bookImage,
+							bookTitle,
+							bookAuthor,
+							bookGenre,
+							bookDescription,
+							bookYear,
+							bookPages,
+							bookSelect
+						);
+					}
 				}
 			});
 		}
