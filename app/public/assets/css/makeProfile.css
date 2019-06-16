@@ -1,0 +1,17 @@
+#body {
+    background: url(../background.jpg);
+}
+
+#jumbo {
+    background-color: darkolivegreen;
+}
+
+
+.welcomeText{
+    text-align: center;
+}
+
+
+#description {
+    padding-bottom: 20px;
+}

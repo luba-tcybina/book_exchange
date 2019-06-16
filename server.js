@@ -4,27 +4,29 @@
 // ******************************************************************************
 // *** Dependencies
 // =============================================================
-require("dotenv").config();
+// require("dotenv").config();
 var express = require("express");
-var moment = require("moment");
-var axios = require("axios");
-var sequelize = require('sequelize');
+// var moment = require("moment");
+// var axios = require("axios");
+// var sequelize = require('sequelize');
 
 // Adding Passport code
 var passport = require('./app/config/passport');
 
 // Import the API keys
-var keys = require("./keys");
+// var keys = require("./keys");
 
 // Initialize the API client using our client id and secret
 // var google = new Amazon(keys.googleBooks);
 
 
 
-// Sets up the Express App
-// =============================================================
+var express = require("express");
+var mysql = require("mysql");
 var app = express();
 var PORT = process.env.PORT || 8080;
+// var PORT = process.env.PORT || 5050;
+
 
 // Requiring our models for syncing
 var db = require("./app/models");
