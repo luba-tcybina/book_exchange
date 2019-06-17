@@ -58,7 +58,7 @@ $(document).ready(function() {
 							'src',
 							'https://books.google.com/books?id=' +
 								response.items[i].id +
-								'&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api'
+								'&printsec=frontcover&img=1&zoom=1&edge=nocurl&source=gbs_api'
 						);
 						var bookTitle = $('<h4>').text(response.items[i].volumeInfo.title);
 						var bookAuthor = $('<h5>').text(response.items[i].volumeInfo.authors[0]);
@@ -66,7 +66,10 @@ $(document).ready(function() {
 						var bookDescription = $('<p>').text(response.items[i].volumeInfo.description);
 						var date = new Date(response.items[i].volumeInfo.publishedDate);
 						var bookYear = $('<p>').text('Published: ' + date.getFullYear());
-						var bookPages = $('<p>').text(response.items[i].volumeInfo.pageCount + 'pages');
+						var bookPages = $('<p>').text(response.items[i].volumeInfo.pageCount + ' pages');
+						var bookCondition = $("<select id='condition'>").html(
+							"<option value='Like New' selected='selected'>Like New</option><option value='Good'>Good</option><option value='Fair'>Fair</option><option value='Poor'>Poor</option>"
+						);
 						var bookSelect = $("<button class='select-book'>")
 							.attr('href', '')
 							.text('Add this book');
@@ -82,6 +85,7 @@ $(document).ready(function() {
 							bookDescription,
 							bookYear,
 							bookPages,
+							bookCondition,
 							bookSelect
 						);
 					}
@@ -90,19 +94,11 @@ $(document).ready(function() {
 		}
 
 		searchBook();
-		/*
-		// Event handler for user clicking the select-book button
-		$('.select-book').on('click', function(event) {
-			// Preventing the button from trying to submit the form
-			event.preventDefault();
-			// Storing the book name
-			var inputbook = $('#book-input')
-				.val()
-				.trim();
+	});
 
-			// Running the searchBook function(passing in the book as an argument)
-			searchBook(inputbook);
-		});
-*/
+	$('#clear').on('click', function(event) {
+		$('#title').text('');
+		$('#author').text('');
+		$('#isbn').text('');
 	});
 });
