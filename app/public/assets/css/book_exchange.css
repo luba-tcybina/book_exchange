@@ -66,6 +66,16 @@ h4 {
 		sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 }
 
+.flexcontainer {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.flexcontainer > div {
+	width: 40%
+}
+
+
 @media (min-width: 768px) {
 	section {
 		padding: 150px 0;

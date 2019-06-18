@@ -38,6 +38,8 @@ $(document).ready(function() {
 			queryURL = queryURL.replace(/ /g, '%20');
 			console.log(queryURL);
 
+			var bookObject = {};
+
 			$.ajax({
 				url: queryURL,
 				method: 'GET',
@@ -76,8 +78,8 @@ $(document).ready(function() {
 						var lineBreak = $('</br>');
 
 						// Append the new book content
-						$('#book-results').append(
-							lineBreak,
+						$('#book-results').append('<div class=\'newBook\'>');
+						$('.newBook').append(
 							bookImage,
 							bookTitle,
 							bookAuthor,
@@ -88,6 +90,17 @@ $(document).ready(function() {
 							bookCondition,
 							bookSelect
 						);
+
+						bookObject = {
+							title: response.items[i].volumeInfo.title,
+							author: response.items[i].volumeInfo.authors[0],
+							genre: response.items[i].volumeInfo.categories[0],
+							description: response.items[i].volumeInfo.description,
+							year: response.items[i].volumeInfo.publishedDate,
+							pages: response.items[i].volumeInfo.pageCount, 
+							image: 'https://books.google.com/books?id=' + response.items[i].id + '&printsec=frontcover&img=1&zoom=1&edge=nocurl&source=gbs_api',
+							email: $('#email').val()
+						};
 					}
 				}
 			});
@@ -101,4 +114,5 @@ $(document).ready(function() {
 		$('#author').text('');
 		$('#isbn').text('');
 	});
+
 });
