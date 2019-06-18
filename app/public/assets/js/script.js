@@ -63,10 +63,10 @@ $(document).ready(function() {
 								response.items[i].id +
 								'&printsec=frontcover&img=1&zoom=1&edge=nocurl&source=gbs_api'
 						);
-						var bookTitle = $('<h4 class=title>').text(response.items[i].volumeInfo.title);
-						var bookAuthor = $('<h5 class=title>').text(response.items[i].volumeInfo.authors[0]);
-						var bookGenre = $('<h5 class=title>').text(response.items[i].volumeInfo.categories[0]);
-						var bookDescription = $('<p class=title>').text('Description: ' + response.items[i].volumeInfo.description);
+						var bookTitle = $('<h4>').text(response.items[i].volumeInfo.title);
+						var bookAuthor = $('<h5>').text(response.items[i].volumeInfo.authors[0]);
+						var bookGenre = $('<h5 class=\'genre\'>').text(response.items[i].volumeInfo.categories[0]);
+						var bookDescription = $('<p>').text(response.items[i].volumeInfo.description);
 						var date = new Date(response.items[i].volumeInfo.publishedDate);
 						var bookYear = $('<p  class=title>').text('Published: ' + date.getFullYear());
 						var bookPages = $('<p  class=title>').text(response.items[i].volumeInfo.pageCount + ' pages');
@@ -76,24 +76,11 @@ $(document).ready(function() {
 						var bookSelect = $("<button class='select-book'>")
 							.attr('href', '')
 							.text('Add this book');
-						var lineBreak = $('</br>');
-						bookObject = {
-							title: response.items[i].volumeInfo.title,
-							author: response.items[i].volumeInfo.authors[0],
-							genre: response.items[i].volumeInfo.categories[0],
-							description: response.items[i].volumeInfo.description,
-							pubYear: response.items[i].volumeInfo.publishedDate,
-							numPages: response.items[i].volumeInfo.pageCount, 
-							imgurl: 'https://books.google.com/books?id=' + response.items[i].id + '&printsec=frontcover&img=1&zoom=1&edge=nocurl&source=gbs_api',
-							email: $('#email').val()
-						};
-						var bookDiv =$('<div style="display:none" id="book'+[i]+'">'+ JSON.stringify(bookObject) +'</div>')
+						var line = $('<hr>');
+
 						// Append the new book content
-						$('#book-results').append('<div class=\'newBook\'>');
-						$('.newBook').append(
-
-							lineBreak,
-
+						$('#book-results').append('<div class=\'newBook\' id=\'newBook' + [i] + '\'>');
+						$('#newBook' + [i]).append(
 							bookImage,
 							bookTitle,
 							bookAuthor,
@@ -102,8 +89,8 @@ $(document).ready(function() {
 							bookYear,
 							bookPages,
 							bookCondition,
-							bookSelect, 
-							bookDiv
+							bookSelect,
+							line
 						);
 
 						bookObject = {

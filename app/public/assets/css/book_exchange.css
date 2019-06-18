@@ -69,10 +69,36 @@ h4 {
 .flexcontainer {
 	display: flex;
 	flex-wrap: wrap;
+	width: 100%;
+	justify-content: space-between;
 }
 
 .flexcontainer > div {
-	width: 40%
+	width: 50%;
+	padding: 20px;
+	text-align: justify;
+}
+
+img {
+	float: left;
+	margin-right: 10px;
+	border-style: solid;
+	border-width: 1px;
+	border-color: lightgray;
+}
+
+hr {
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+.genre {
+	font-style: italic;
+}
+
+.select-book {
+	margin-left: 10px;
+	margin-right: 10px;
 }
 
 
