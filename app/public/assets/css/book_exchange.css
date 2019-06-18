@@ -66,6 +66,15 @@ h4 {
 		sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
 }
 
+.flexcontainer {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.flexcontainer > div {
+	width: 40%
+}
+
 
 
 @media (min-width: 768px) {
@@ -308,31 +317,4 @@ header.masthead .intro-text .intro-heading {
 .imgresult 	{
 
 }
-
-/*On the flex container*/
-
-/* .flexcontainer {
-	display: flex;
-	flex-wrap: wrap;
-
- }
-
- .flexcontainer > div {
-width: 40%;
- } */
-
-/* 
-#book-results {
-
-	/* order: 0;
-	 margin-left: 50px;
-	 margin-right: 50px;
-	 margin-top: 50px;
-	 margin-bottom: 50px; */
-	 /* width: 20%;
-	 display: flex;
-	 flex-direction: column;
-	 flex-basis: 100%;
-	 flex: 2;
-} */ */
 
