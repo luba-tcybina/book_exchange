@@ -23,7 +23,7 @@
   <link href="css/agency.min.css" rel="stylesheet">
   <link href="css/book_exchange.css" rel="stylesheet">
   <link href="//netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-  
+
 </head>
 
 <body id="page-top bg">
@@ -43,15 +43,15 @@
             <form method="POST" role="form">
               <!-- Name -->
               <div class="form-group">
-                  <label for="name">Your Name</label>
-                  <input type="text" class="form-control" id="name">
-                </div>
+                <label for="name">Your Name</label>
+                <input type="text" class="form-control" id="name">
+              </div>
               <!-- Email -->
               <div class="form-group">
-                  <label for="email">Your Email</label>
-                  <input type="email" pattern="[^ @]*@[^ @]*" class="form-control" id="email">
-                </div>
-                <hr>
+                <label for="email">Your Email</label>
+                <input type="email" pattern="[^ @]*@[^ @]*" class="form-control" id="email">
+              </div>
+              <hr>
               <!-- Title -->
               <h4> Search for your book</h4>
               <div class="form-group">
@@ -63,35 +63,46 @@
                 <label for="author">Author</label>
                 <input type="text" class="form-control" id="author">
               </div>
-              
+
               <div class="row">
-                <div class="col"><hr></div>
+                <div class="col">
+                  <hr>
+                </div>
                 <div class="col-auto">OR</div>
-                <div class="col"><hr></div>
-            </div>
+                <div class="col">
+                  <hr>
+                </div>
+              </div>
 
               <!-- ISBN -->
-<!-- glyphicon-question-sign needs work -->
-
-              <label for="author">ISBN <span class="glyphicon glyphicon-search" aria-hidden="true"></span> </label> 
-              <div class="form-group"></div>
+              <!-- glyphicon-question-sign needs work -->
+              <div class="form-group">
+                <label for="author">ISBN <span class="glyphicon glyphicon-search" aria-hidden="true"></span> </label>
                 <input type="text" class="form-control" id="isbn">
               </div>
 
-              <button type="submit" class="btn btn-primary btn-md" id="add-btn"> Find</button>
+              <button type="submit" class="btn btn-lg btn-primary" id="add-btn">Find</button>
               <a id='clear' href=''>Clear</a>
-              <div class="col"><hr></div>
-              <div id="book-results"></div>
-
-            </div>
           </div>
-        </div>
 
+
+          <div class="col">
+            <hr>
+          </div>
+
+          <div class="flexcontainer">
+            <div class="flexcontainer" id="book-results"></div>
+          </div>
+
+        </div>
       </div>
     </div>
-   </div>
-<script type="text/javascript" src="./js/script.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  </div>
+  </div>
+  </div>
+  <script type="text/javascript" src="./js/script.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </body>
 
 </html>

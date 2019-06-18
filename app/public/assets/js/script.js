@@ -54,19 +54,19 @@ $(document).ready(function() {
 				} else {
 					// Constructing HTML containing the book information
 					for (let i = 0; i < response.items.length; i++) {
-						var bookImage = $('<img>').attr(
+						var bookImage = $('<img class=title>').attr(
 							'src',
 							'https://books.google.com/books?id=' +
 								response.items[i].id +
 								'&printsec=frontcover&img=1&zoom=1&edge=nocurl&source=gbs_api'
 						);
-						var bookTitle = $('<h4>').text(response.items[i].volumeInfo.title);
-						var bookAuthor = $('<h5>').text(response.items[i].volumeInfo.authors[0]);
-						var bookGenre = $('<h5>').text(response.items[i].volumeInfo.categories[0]);
-						var bookDescription = $('<p>').text(response.items[i].volumeInfo.description);
+						var bookTitle = $('<h4 class=title>').text(response.items[i].volumeInfo.title);
+						var bookAuthor = $('<h5 class=title>').text(response.items[i].volumeInfo.authors[0]);
+						var bookGenre = $('<h5 class=title>').text(response.items[i].volumeInfo.categories[0]);
+						var bookDescription = $('<p class=title>').text('Description: ' + response.items[i].volumeInfo.description);
 						var date = new Date(response.items[i].volumeInfo.publishedDate);
-						var bookYear = $('<p>').text('Published: ' + date.getFullYear());
-						var bookPages = $('<p>').text(response.items[i].volumeInfo.pageCount + ' pages');
+						var bookYear = $('<p  class=title>').text('Published: ' + date.getFullYear());
+						var bookPages = $('<p  class=title>').text(response.items[i].volumeInfo.pageCount + ' pages');
 						var bookCondition = $("<select id='condition'>").html(
 							"<option value='Like New' selected='selected'>Like New</option><option value='Good'>Good</option><option value='Fair'>Fair</option><option value='Poor'>Poor</option>"
 						);
@@ -76,7 +76,8 @@ $(document).ready(function() {
 						var lineBreak = $('</br>');
 
 						// Append the new book content
-						$('#book-results').append(
+						$('#book-results').append('<div class=\'newBook\'>');
+						$('.newBook').append(
 							lineBreak,
 							bookImage,
 							bookTitle,
