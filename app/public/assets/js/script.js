@@ -64,7 +64,7 @@ $(document).ready(function() {
 						);
 						var bookTitle = $('<h4>').text(response.items[i].volumeInfo.title);
 						var bookAuthor = $('<h5>').text(response.items[i].volumeInfo.authors[0]);
-						var bookGenre = $('<h5>').text(response.items[i].volumeInfo.categories[0]);
+						var bookGenre = $('<h5 class=\'genre\'>').text(response.items[i].volumeInfo.categories[0]);
 						var bookDescription = $('<p>').text(response.items[i].volumeInfo.description);
 						var date = new Date(response.items[i].volumeInfo.publishedDate);
 						var bookYear = $('<p>').text('Published: ' + date.getFullYear());
@@ -75,11 +75,11 @@ $(document).ready(function() {
 						var bookSelect = $("<button class='select-book'>")
 							.attr('href', '')
 							.text('Add this book');
-						var lineBreak = $('</br>');
+						var line = $('<hr>');
 
 						// Append the new book content
-						$('#book-results').append('<div class=\'newBook\'>');
-						$('.newBook').append(
+						$('#book-results').append('<div class=\'newBook\' id=\'newBook' + [i] + '\'>');
+						$('#newBook' + [i]).append(
 							bookImage,
 							bookTitle,
 							bookAuthor,
@@ -88,7 +88,8 @@ $(document).ready(function() {
 							bookYear,
 							bookPages,
 							bookCondition,
-							bookSelect
+							bookSelect,
+							line
 						);
 
 						bookObject = {
