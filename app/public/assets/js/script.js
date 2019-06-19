@@ -1,5 +1,6 @@
-$(document).ready(function() {
-	$('#add-btn').on('click', function(event) {
+$(document).ready(function () {
+
+	$('#add-btn').on('click', function (event) {
 		event.preventDefault();
 		var key = 'AIzaSyDB0TwWP5ouoFr37dmNo1r9HCRWzg3czsk';
 
@@ -44,7 +45,7 @@ $(document).ready(function() {
 			$.ajax({
 				url: queryURL,
 				method: 'GET',
-			}).then(function(response) {
+			}).then(function (response) {
 				// Printing the entire object to console
 				console.log(response);
 
@@ -60,8 +61,8 @@ $(document).ready(function() {
 						var bookImage = $('<img class=title>').attr(
 							'src',
 							'https://books.google.com/books?id=' +
-								response.items[i].id +
-								'&printsec=frontcover&img=1&zoom=1&edge=nocurl&source=gbs_api'
+							response.items[i].id +
+							'&printsec=frontcover&img=1&zoom=1&edge=nocurl&source=gbs_api'
 						);
 						var bookTitle = $('<h4>').text(response.items[i].volumeInfo.title);
 						var bookAuthor = $('<h5>').text(response.items[i].volumeInfo.authors[0]);
@@ -73,11 +74,24 @@ $(document).ready(function() {
 						var bookCondition = $("<select id='condition'>").html(
 							"<option value='Like New' selected='selected'>Like New</option><option value='Good'>Good</option><option value='Fair'>Fair</option><option value='Poor'>Poor</option>"
 						);
-						var bookSelect = $("<button class='select-book'>")
-							.attr('href', '')
+						var bookSelect = $("<button type='button' class='select-book' data-id='" + [i] + "'>")
+							// .attr('href', '')
 							.text('Add this book');
 						var line = $('<hr>');
 
+						var lineBreak = $('</br>');
+						bookObject = {
+							isbn: response.items[i].volumeInfo.industryIdentifiers[0].identifier,
+							title: response.items[i].volumeInfo.title,
+							author: response.items[i].volumeInfo.authors[0],
+							genre: response.items[i].volumeInfo.categories[0],
+							// description: response.items[i].volumeInfo.description,
+							pubYear: response.items[i].volumeInfo.publishedDate,
+							numPages: response.items[i].volumeInfo.pageCount,
+							imgurl: 'https://books.google.com/books?id=' + response.items[i].id + '&printsec=frontcover&img=1&zoom=1&edge=nocurl&source=gbs_api',
+							email: $('#email').val()
+						};
+						var bookDiv = $('<div style="display:none" class="bookObject" id="book' + [i] + '">' + JSON.stringify(bookObject) + '</div>')
 						// Append the new book content
 						$('#book-results').append('<div class=\'newBook\' id=\'newBook' + [i] + '\'>');
 						$('#newBook' + [i]).append(
@@ -90,7 +104,8 @@ $(document).ready(function() {
 							bookPages,
 							bookCondition,
 							bookSelect,
-							line
+							line,
+							bookDiv
 						);
 
 						bookObject = {
@@ -112,12 +127,35 @@ $(document).ready(function() {
 		}
 
 		searchBook();
-	});
 
-	$('#clear').on('click', function(event) {
+	});
+	$(document).on('click', '.select-book', function () {
+		event.preventDefault();
+		event.stopPropagation();
+		event.stopImmediatePropagation();
+		var btnID = $(this).attr("data-id");
+		var bookID = "#book"+btnID;
+		var bookData = $(bookID).text();
+		var bookObjectData = JSON.parse(bookData)
+		console.log(bookData);
+		var isbn = bookObjectData.isbn;
+		// console.log(dataText);
+		console.log(bookObjectData);
+
+		function addBook(event) {
+			event.preventDefault();
+			$.post("/api/addBook", bookObjectData);
+			$newItemInput.val("");
+		}
+
+	})
+
+
+
+
+	$('#clear').on('click', function (event) {
 		$('#title').text('');
 		$('#author').text('');
 		$('#isbn').text('');
 	});
-
 });

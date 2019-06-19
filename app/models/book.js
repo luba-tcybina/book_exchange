@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
     genre: DataTypes.STRING,
     description: DataTypes.TEXT,
     imageurl: DataTypes.STRING,
-    pubYear: DataTypes.INTEGER(4),
+    pubYear: DataTypes.DATE,
     numPages: DataTypes.INTEGER
   });
   Book.associate = function(models) {
